@@ -7,13 +7,7 @@ function start(route, handle) {
         var pathname = url.parse(req.url).pathname;
         console.log("Request for " + pathname + " received.");
 
-        route(handle, pathname);
-
-        res.writeHead(200, {
-            'Content-Type': 'text/plain'
-        });
-        res.write('Hello World');
-        res.end();
+        route(handle, pathname, res);
     }
     http.createServer(onRequest).listen(3000);
     console.log('Server running at 3000');
